@@ -121,6 +121,14 @@
         }
     ];
 
+    function checkMenu() {
+        if (yOffset > 44) {
+            document.body.classList.add('local-nav-sticky');
+        } else {
+            document.body.classList.remove('local-nav-sticky');
+        }
+    } 
+
     function setCanvasImages() {
         let imgElem;
         for (let i = 0; i < sceneInfo[0].values.videoImageCount; i++) {
@@ -466,11 +474,12 @@
     window.addEventListener('scroll', () => {
         yOffset = window.pageYOffset;
         scrollLoop();
+        checkMenu(); 
     });
     // window.addEventListener('DOMContentLoaded', setLayout); html먼저 골격먼저 세팅
     window.addEventListener('load', () => {
         setLayout();
-        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
+        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);    
 
 
     }); // 새로고침했을 때
