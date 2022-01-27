@@ -156,7 +156,6 @@
             sceneInfo[3].objs.images.push(imgElem3);
         }
     }
-    setCanvasImages();
 
     function setLayout() {
         //각 스크롤 섹션의 높이 세팅
@@ -520,8 +519,13 @@
     }); // 새로고침했을 때
     window.addEventListener('resize', () => {
         if (window.innerWidth > 900) {
-           window.location.reload();
+           setLayout();
         }
+        sceneInfo[3].values.rectStartY = 0;
     }); //창크기 바꾸는거
+    
+    window.addEventListener('orientataionchange', setLayout); //모바일 기기 가로세로 모드 바뀔 때마다 
+
+    setCanvasImages();
 })();
 
