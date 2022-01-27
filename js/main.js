@@ -512,6 +512,7 @@
     });
     // window.addEventListener('DOMContentLoaded', setLayout); html먼저 골격먼저 세팅
     window.addEventListener('load', () => {
+        document.body.classList.remove('before-load');
         setLayout();
         sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);    
 
@@ -523,8 +524,11 @@
         }
         sceneInfo[3].values.rectStartY = 0;
     }); //창크기 바꾸는거
-    
+
     window.addEventListener('orientataionchange', setLayout); //모바일 기기 가로세로 모드 바뀔 때마다 
+    document.querySelector('.loading').addEventListener('transitionend', (e) => {
+        document.body.removeChild(e.currentTarget);
+    });
 
     setCanvasImages();
 })();
