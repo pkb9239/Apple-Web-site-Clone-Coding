@@ -521,11 +521,13 @@
         window.addEventListener('resize', () => {
             if (window.innerWidth > 900) {
                setLayout();
+               sceneInfo[3].values.rectStartY = 0;
             }
-            sceneInfo[3].values.rectStartY = 0;
         }); //창크기 바꾸는거    
 
-        window.addEventListener('orientataionchange', setLayout); //모바일 기기 가로세로 모드 바뀔 때마다 
+        window.addEventListener('orientataionchange', () => {
+            setTimeout(setLayout, 500);
+        }); //모바일 기기 가로세로 모드 바뀔 때마다 
 
         document.querySelector('.loading').addEventListener('transitionend', (e) => {
             document.body.removeChild(e.currentTarget);

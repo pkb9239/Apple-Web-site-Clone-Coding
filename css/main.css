@@ -21,6 +21,10 @@ a {
 body.before-load {
     overflow: hidden;
 }
+.container {
+    /* IPhone 가로 스크롤 방지 */
+    overflow: hidden;
+}
 .global-nav {
     position: absolute;
     top: 0;
@@ -44,6 +48,9 @@ body.before-load {
     position: fixed;
     top: 0;
     background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: saturate(180%) blur(15px); /* IPhone */
+    -moz-backdrop-filter: saturate(180%) blur(15px); /* IPhone */
+    -o-backdrop-filter:  saturate(180%) blur(15px); /* IPhone */
     backdrop-filter: saturate(180%) blur(15px);
 }
 
@@ -144,7 +151,7 @@ body.before-load {
 }
 .canvas-caption {
     max-width: 1000px;
-    margin: -4em auto 0;
+    margin: -24rem auto 0;
     padding: 0 1rem;
     font-size: 1.2rem;
     color: #888;
@@ -178,6 +185,7 @@ body.before-load {
 #show-scene-2 #scroll-section-2 .sticky-elem,
 #show-scene-3 #scroll-section-3 .sticky-elem {
     display: block;
+    will-change: transform, opacity;
 }
 #scroll-section-3 {
     display: flex;
@@ -263,6 +271,7 @@ body.before-load {
         padding: 0;
     }
     .canvas-caption {
+        margin-top: -8rem;
         font-size: 2rem;
         padding: 0;
     }
