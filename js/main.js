@@ -505,7 +505,22 @@
     window.addEventListener('load', () => {
         document.body.classList.remove('before-load');
         setLayout();
-        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);    
+        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);   
+        
+        let tempYOffset = yOffset;
+        let tempScrollCount = 0;
+        if (yOffset > 0) {
+            let siId = setInterval(() => {
+                window.scrollTo(0, tempYOffset);
+                tempYOffset += 5;
+    
+    
+                if (tempScrollCount > 20) {
+                    clearInterval(siId);
+                }
+                tempScrollCount++;
+            }, 20);    
+        }
 
         window.addEventListener('scroll', () => {
             yOffset = window.pageYOffset;
@@ -520,13 +535,15 @@
 
         window.addEventListener('resize', () => {
             if (window.innerWidth > 900) {
-               setLayout();
-               sceneInfo[3].values.rectStartY = 0;
+                window.location.reload();
             }
         }); //창크기 바꾸는거    
 
         window.addEventListener('orientataionchange', () => {
-            setTimeout(setLayout, 500);
+            scrollTo(0, 0);
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
         }); //모바일 기기 가로세로 모드 바뀔 때마다 
 
         document.querySelector('.loading').addEventListener('transitionend', (e) => {

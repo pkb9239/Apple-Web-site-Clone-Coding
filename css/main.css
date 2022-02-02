@@ -232,6 +232,9 @@ body.before-load {
     fill: none;
     animation: loading-circle-ani 1s infinite;
 }
+.before-load .container {
+    display: none;
+}
 .before-load .loading {
     opacity: 1;
 }
