@@ -18,6 +18,9 @@ a {
     color: rgb(29, 29, 31);
     text-decoration: none;
 }
+body.before-load {
+    overflow: hidden;
+}
 .global-nav {
     position: absolute;
     top: 0;
